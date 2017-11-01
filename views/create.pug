@@ -1,0 +1,35 @@
+html
+  head
+    title
+      | create
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+
+  body
+    form.js-create-form
+      h3 AGREGAR receta
+      div
+        label Nombre de receta
+        input.js-field(type="text", name="name", data-validate="true")
+      div
+        label Detalle de receta
+        textarea.js-field(type="text", name="detail", data-validate="true")
+      div
+        label Ingredientes
+        select.js-field.js-example-basic-multiple(multiple="multiple", name="ingredients", data-validate="true")
+          each val in ingredients
+            option
+              = val.name
+      div
+        label Restricciones
+        select.js-field.js-example-basic-multiple(multiple="multiple", name="restrictions", data-validate="true")
+          each val in restrictions
+            option
+              = val.name
+      div
+        input(type="submit" value="Enviar") 
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js")
+    script
+      | $(".js-example-basic-multiple").select2({ tags: true});
+    script(src='/js/build/app.js')
